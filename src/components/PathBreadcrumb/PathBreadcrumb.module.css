@@ -1,0 +1,30 @@
+.path-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    background-color: var(--controls-background-light-color);
+    padding: 10px 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.segment {
+    padding: 0.5rem;
+    background: none;
+    border: 0;
+    color: var(--controls-text-color);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.segment:hover {
+    background-color: #3b4e46;
+}
+
+.segment.active {
+    color: var(--text-color);
+}
+
+.separator {
+    color: var(--controls-text-color);
+}

@@ -1,0 +1,29 @@
+.file-system-item {
+
+}
+.file-system-item .item-inner-wrapper:hover {
+    background-color: #3b4e46;
+}
+.item-inner-wrapper {
+    padding: 10px;
+}
+
+.file-system-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    width: 50%;
+    cursor: pointer
+}
+
+.file-system-container:hover {
+    background-color: var(--controls-background-light-color);
+}
+
+.file-system-icon, .file-system-label {
+    pointer-events: none;
+    user-select: none;
+}
