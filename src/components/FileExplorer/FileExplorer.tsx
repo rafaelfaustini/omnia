@@ -15,7 +15,8 @@ function FileExplorer() {
 
     async function handleFileSystemItemDoubleClick(fileSystemObject: FileSystemObject) {
         if(fileSystemObject.isFolder) {
-            let newPath = currentPath + "/" + fileSystemObject.name;
+            const separator = currentPath.includes('\\') ? '\\' : '/';
+            let newPath = currentPath + separator + fileSystemObject.name;
             handlePathChange(newPath);
         }
     }
