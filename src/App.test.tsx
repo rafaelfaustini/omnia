@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import App from './App';
 import { mockIPC } from '@tauri-apps/api/mocks';
 
-test('should render App component without crashing', async () => {
+it('renders App component without crashing', async () => {
   mockIPC((cmd, args) => {
     
     if (cmd === 'home_directory') {
