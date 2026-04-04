@@ -83,4 +83,34 @@ describe("FileExplorer", () => {
 
     expect(mockHandler).toHaveBeenCalledWith('directory_contents', { directory: 'C:\\Users\\omnia\\Documents' });
   });
+
+
+  test('opens file on double-click', async () => {
+    const user = userEvent.setup();
+
+    interface DirectoryArgs { directory: string; }
+
+    const mockHandler = vi.fn((cmd, args) => {
+      if (cmd === 'home_directory') return 'C:\\Users\\Name\\Documents';
+      if (cmd === 'directory_contents') {
+        const { directory } = args as unknown as DirectoryArgs;
+        if (directory === 'C:\\Users\\Name\\Documents') {
+          return [{ name: 'Resume', extension: '.pdf', isFolder: false }];
+        }
+        return [];
+      }
+      if (cmd === 'open_file') {
+        return null;
+      }
+    });
+
+    mockIPC(mockHandler);
+
+    render(<FileExplorer />);
+
+    const file = await screen.findByText(/Resume/i);
+    await user.dblClick(file);
+
+    expect(mockHandler).toHaveBeenCalledWith('open_file', { path: 'C:\\Users\\Name\\Documents\\Resume.pdf' });
+  });
 })
