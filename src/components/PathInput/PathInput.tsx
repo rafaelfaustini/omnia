@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import PathBreadcrumb from "../PathBreadcrumb/PathBreadcrumb";
 import classes from "./PathInput.module.css";
 
@@ -26,7 +26,7 @@ function PathInput({currentPath, onPathChange}: {currentPath: string, onPathChan
         setNewPath(currentPath);
     }
 
-    useMemo(() => {
+    useEffect(() => {
         setNewPath(currentPath);
     }, [currentPath]);
 

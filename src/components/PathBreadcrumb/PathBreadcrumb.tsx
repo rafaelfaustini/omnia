@@ -29,7 +29,7 @@ function PathBreadcrumb({ currentPath, onPathChange }: { currentPath: string; on
     }
 
     return (
-        <div className={classes["path-breadcrumb"]} role="button">
+        <div className={classes["path-breadcrumb"]}>
             {parsedPath.segments.map((segment, index) => (
                 <Fragment key={segment.id}>
                 <button className={`${classes.segment} ${isActiveSegment(index) ? classes.active : ''}`} onClick={() => handleSegmentClick(index)}>
