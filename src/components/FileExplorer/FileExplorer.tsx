@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import PathInput from "../PathInput/PathInput";
 import PathContent from "../PathContent/PathContent";
 import FileSystemObject from "../../constants/FileSystemObject";
+import { assembleFilePath, assembleFolderPath } from "../../utils/pathUtils";
 
 function FileExplorer() {
     const [currentPath, setCurrentPath] = useState<string>("");
@@ -14,16 +15,13 @@ function FileExplorer() {
     };
 
     async function handleFileSystemItemDoubleClick(fileSystemObject: FileSystemObject) {
-        const separator = currentPath.includes('\\') ? '\\' : '/';
-        let newPath = currentPath + separator + fileSystemObject.name;
         if(fileSystemObject.isFolder) {
-
+            const newPath = assembleFolderPath(currentPath, fileSystemObject);
             handlePathChange(newPath);
             return;
         }
 
-        newPath += "."+fileSystemObject.extension;
-        console.log(newPath)
+        const newPath = assembleFilePath(currentPath, fileSystemObject);
         await invoke("open_file", { path: newPath })
 
     }
