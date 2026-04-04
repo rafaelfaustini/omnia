@@ -14,11 +14,18 @@ function FileExplorer() {
     };
 
     async function handleFileSystemItemDoubleClick(fileSystemObject: FileSystemObject) {
+        const separator = currentPath.includes('\\') ? '\\' : '/';
+        let newPath = currentPath + separator + fileSystemObject.name;
         if(fileSystemObject.isFolder) {
-            const separator = currentPath.includes('\\') ? '\\' : '/';
-            let newPath = currentPath + separator + fileSystemObject.name;
+
             handlePathChange(newPath);
+            return;
         }
+
+        newPath += "."+fileSystemObject.extension;
+        console.log(newPath)
+        await invoke("open_file", { path: newPath })
+
     }
 
     async function getCurrentDirectory() {
