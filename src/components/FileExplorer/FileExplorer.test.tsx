@@ -24,7 +24,7 @@ describe("FileExplorer", () => {
               return [{ name: 'Documents', extension: '', isFolder: true  }];
           }
           if (directory === '/home/Documents') {
-              return [{ name: 'Resume', extension: '.pdf', isFolder: false }];
+              return [{ name: 'Resume', extension: 'pdf', isFolder: false }];
         }
         return [];
       }
@@ -63,7 +63,7 @@ describe("FileExplorer", () => {
               return [{ name: 'Documents', extension: '', isFolder: true  }];
           }
           if (directory === 'C:\\Users\\omnia\\Documents') {
-              return [{ name: 'Resume', extension: '.pdf', isFolder: false }];
+              return [{ name: 'Resume', extension: 'pdf', isFolder: false }];
         }
         return [];
       }
@@ -95,7 +95,7 @@ describe("FileExplorer", () => {
       if (cmd === 'directory_contents') {
         const { directory } = args as unknown as DirectoryArgs;
         if (directory === 'C:\\Users\\Name\\Documents') {
-          return [{ name: 'Resume', extension: '.pdf', isFolder: false }];
+          return [{ name: 'Resume', extension: 'pdf', isFolder: false }];
         }
         return [];
       }
