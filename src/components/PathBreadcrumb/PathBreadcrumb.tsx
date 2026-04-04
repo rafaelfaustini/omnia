@@ -3,7 +3,7 @@ import classes from "./PathBreadcrumb.module.css";
 import ParsedPath from "../../constants/ParsedPath";
 import PathSegment from "../../constants/PathSegment";
 
-function PathBreadcrumb({ currentPath, onPathChange, onInputModeChange }: { currentPath: string; onPathChange?: (newPath: string) => void; onInputModeChange?: (isInputMode: boolean) => void;}) {
+function PathBreadcrumb({ currentPath, onPathChange }: { currentPath: string; onPathChange?: (newPath: string) => void; }) {
 
     const parsedPath = useMemo(() => {
         const isAbsolutePath = currentPath?.startsWith("/") ?? false;
@@ -28,15 +28,8 @@ function PathBreadcrumb({ currentPath, onPathChange, onInputModeChange }: { curr
         return index === parsedPath.segments.length - 1;
     }
 
-    function handleOutsideSegmentClick(e: React.MouseEvent<HTMLDivElement>) {
-        if (e.target === e.currentTarget) {
-            onInputModeChange?.(true)
-        }
-    }
-
-
     return (
-        <div className={classes["path-breadcrumb"]} onClick={handleOutsideSegmentClick}>
+        <div className={classes["path-breadcrumb"]}>
             {parsedPath.segments.map((segment, index) => (
                 <Fragment key={segment.id}>
                 <button className={`${classes.segment} ${isActiveSegment(index) ? classes.active : ''}`} onClick={() => handleSegmentClick(index)}>
@@ -52,3 +45,6 @@ function PathBreadcrumb({ currentPath, onPathChange, onInputModeChange }: { curr
     );
 }
 export default PathBreadcrumb;
+
+
+
