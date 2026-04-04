@@ -1,6 +1,3 @@
-.file-system-item {
-
-}
 .file-system-item .item-inner-wrapper:hover {
     background-color: #3b4e46;
 }
@@ -26,4 +23,7 @@
 .file-system-icon, .file-system-label {
     pointer-events: none;
     user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }

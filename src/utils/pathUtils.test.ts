@@ -1,10 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
-import { mockIPC } from '@tauri-apps/api/mocks';
-import { vi } from 'vitest';
 import { assembleFilePath, assembleFolderPath, getPathSeparator } from './pathUtils';
-import FileSystemObject from '../constants/FileSystemObject';
+import type FileSystemObject from '../constants/FileSystemObject';
 
 describe("PathUtils", () => {
     describe("getPathSeparator", () => {
