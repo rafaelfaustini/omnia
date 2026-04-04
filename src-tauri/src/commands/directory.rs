@@ -28,7 +28,7 @@ pub fn directory_contents(directory: &str) -> Result<Vec<FileInfo>, String> {
         let path = entry.path();
         let metadata = entry.metadata().map_err(|e| e.to_string())?;
 
-        let name = path.file_name()
+        let name = path.file_stem()
             .map(|n| n.to_string_lossy().into_owned())
             .unwrap_or_else(|| "Unknown".to_string());
 
@@ -44,4 +44,4 @@ pub fn directory_contents(directory: &str) -> Result<Vec<FileInfo>, String> {
     }
 
     Ok(file_infos)
-   }
+}
