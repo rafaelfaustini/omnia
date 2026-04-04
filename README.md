@@ -10,9 +10,9 @@ A really early stage project without some core features and subtle to several de
 * Double click folders to access
 * Navigation through breadcrumb
 * Navigation through text input
+* Double click to open files
 
 ### What's next ?
-* Open files
 * Copy/Paste files
 * Select multiple files
 * Properties with folder/file metadata
